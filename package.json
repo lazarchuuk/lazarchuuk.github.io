@@ -1,0 +1,16 @@
+{
+  "name": "lazarchuuk.github.io",
+  "version": "1.0.0",
+  "dependencies": {
+    "@types/mathjs": "^6.0.5",
+    "firebase": "^7.21.0",
+    "firebase-tools": "^8.10.0"
+  },
+  "devDependencies": {
+    "big.js": "^5.2.2",
+    "webpack": "^4.44.2"
+  },
+  "scripts": {
+    "build": "webpack --config webpack.config.js"
+  }
+}

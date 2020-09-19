@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<h1 class="header">Welcome to Calculator!</h1>
+<form name="calc" class="calc-form">
+    <label for="first-num"><input id="first-num" name="first-num" type="text" class="input-field"></label>
+
+    <div class="radios">
+        <div class="radio">
+            <input type="radio" id="plus" name="operation" value="+" class="radio-btn" checked>
+            <label for="plus" class="radio-lbl">+</label>
+        </div>
+        <div class="radio">
+            <input type="radio" id="minus" name="operation" value="-" class="radio-btn">
+            <label for="minus" class="radio-lbl">-</label>
+        </div>
+    </div>
+
+    <label for="second-num"><input id="second-num" name="second-num" type="text" class="input-field"></label>
+
+    <input type="submit" value="Calculate!" class="submit-btn">
+
+    <div class="result-container"><h2 id="result" class="result"></h2></div>
+</form>
+
+<footer class="footer">
+    <div>Лазарчук Виктория Стефановна</div>
+    <div>4 курс, 4 группа</div>
+    <div>2020</div>
+</footer>
+<script src="big.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
