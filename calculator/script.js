@@ -1,6 +1,3 @@
-const x = new Big('1000000000000.000000');
-const y = new Big('900000000000.999999');
-
 const calcForm = document.forms['calc'];
 calcForm.addEventListener('submit', calculator);
 
@@ -17,28 +14,49 @@ function calculator(event) {
             case '-':
                 document.getElementById('result').innerText = `${diff(new Big(a), new Big(b))}`;
                 break;
+            case '*':
+                document.getElementById('result').innerText = `${multiply(new Big(a), new Big(b))}`;
+                break;
+            case '/':
+                document.getElementById('result').innerText = `${division(new Big(a), new Big(b))}`;
+                break;
         }
     } catch (err) {
-        console.error(`Error: ${err}`);
+        alert(`${err}`);
     }
 
 }
 
 function sum(x, y) {
-    return x.plus(y).toPrecision();
+    return result(x.plus(y).round(6).toPrecision());
 }
 
 function diff(x, y) {
-    return x.minus(y).toPrecision();
+    return result(x.minus(y).round(6).toPrecision());
+}
+
+function multiply(x, y) {
+    return result(x.times(y).round(6).toPrecision());
+}
+
+function division(x, y) {
+    return result(x.div(y).round(6).toPrecision());
+}
+
+function result(val) {
+    let parts = val.split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return parts.join('.');
 }
 
 function prettier(val) {
     isValid(val);
-     return val.replace(',', '.');
+    return val.replace(',', '.').replace(/\s/g, "");
 }
 
 function isValid(val) {
-    if (val.indexOf('e') !== -1) {
+    const reg = new RegExp('^(((\\d{1,3})( \\d{3})*)|(\\d*))(\\.\\d*)?$')
+    if ((val.indexOf('e') !== -1) || (!!!reg.test(val))) {
         throw new Error('Invalid Data');
     }
     return true;
